@@ -13,6 +13,7 @@ namespace urlmonitor.Models
     {
         public string name { get; set; }
         public string url { get; set; }
+        public string logpath { get; set; }
 
     }
   

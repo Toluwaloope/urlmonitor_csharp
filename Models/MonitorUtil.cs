@@ -17,7 +17,7 @@ namespace urlmonitor.Models
         {
             
                 List<JsonUrl> urldetails = new List<JsonUrl>();
-                string filePath = @"~\urls.json";
+                string filePath = @"./urls.json";
             try
             {
                 urldetails = JsonConvert.DeserializeObject<List<JsonUrl>>(System.IO.File.ReadAllText(filePath));
@@ -28,6 +28,7 @@ namespace urlmonitor.Models
                 Console.WriteLine("Unable to read urls from file");
                 Console.WriteLine(e);
             }
+
 
           
             //while (calendardeatils) { }
@@ -62,18 +63,29 @@ namespace urlmonitor.Models
                         newtest.urlstatus = "Url is available and ok";
                         newtest.statuscode = myHttpWebResponse.StatusCode;
                         //myHttpWebResponse.StatusDescription;
+
+                        WriteMessageToFile(url.logpath, DateTime.Now + " : " + url.url + " is dope");
                     }
                     else if (myHttpWebResponse.StatusCode != HttpStatusCode.OK)
                     {
                         newtest.urlstatus = "Url is available but not ok";
                         newtest.statuscode = myHttpWebResponse.StatusCode;
 
+                        WriteMessageToFile(url.logpath, DateTime.Now + " : " + url.url + "did not respond in 5 seconds and the http status code is " + myHttpWebResponse.StatusCode);
+
                     }
-                    else if (myHttpWebResponse.StatusDescription == null) {
+                    else if (myHttpWebResponse.StatusDescription == null)
+                    {
 
                         newtest.urlstatus = "Url did not respond";
                         //newtest.statuscode = myHttpWebResponse.StatusCode;
 
+                        WriteMessageToFile(url.logpath, url.url + "did not respond in 5 seconds");
+
+                    }
+                    else {
+
+                        WriteMessageToFile(url.logpath, url.url + "is faulty");
                     }
                     // Releases the resources of the response.
                     myHttpWebResponse.Close();
@@ -104,7 +116,35 @@ namespace urlmonitor.Models
 
             return testedUrls;
         }
-        
-       
+
+        private void WriteMessageToFile(string filepath,string message)
+        {
+            string logpath;
+
+            string todaylog = @"C:\logss\" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day+ ".log";
+
+            if (File.Exists(todaylog))
+            {
+                logpath = todaylog;
+            }
+            else
+            {
+                File.Create(todaylog).Close();
+         
+            }
+
+            StreamWriter sw = null;
+            try
+            {
+                sw = new StreamWriter(todaylog, true);
+                sw.WriteLine(message);
+                sw.Flush();
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
