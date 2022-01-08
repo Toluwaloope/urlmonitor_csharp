@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\reload.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Scripts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\reload.js" />
   </ItemGroup>
 
   <ItemGroup>

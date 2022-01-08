@@ -50,7 +50,7 @@ namespace urlmonitor.Models
                      // Creates an HttpWebRequest for the specified URL.
 
                     HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(url.url);
-                    myHttpWebRequest.Timeout = 5000;
+                    myHttpWebRequest.Timeout = 10000;
                     newtest.testedurllink = url.url;
                     newtest.testedurlname = url.name;
                 // Sends the HttpWebRequest and waits for a response.
