@@ -1,0 +1,45 @@
+﻿@using urlmonitor.Models
+@{
+    ViewData["Title"] = "Home Page";
+    List<Tested> testedurls = ViewBag.TestUrl;
+}
+
+<div class="text-center">
+    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Url</th>
+                <th scope="col">Application Name</th>
+                <th scope="col">Application Status</th>
+                <th scope="col">Status COde</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{ foreach (var testedurl in testedurls)
+                    {
+                
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => testedurl.testedurllink)</td>
+                            <td>@Html.DisplayFor(modelItem => testedurl.testedurlname)</td>
+                            @if(testedurl.statuscode.ToString() == "OK")
+                            {
+                            <td class="bg-success">@Html.DisplayFor(modelItem => testedurl.statuscode)</td>
+                            }
+                            else if(testedurl.statuscode.ToString() != "OK")
+                            {
+                            <td class="bg-danger">@Html.DisplayFor(modelItem => testedurl.statuscode)</td>
+                            }
+                            <td>@Html.DisplayFor(modelItem => testedurl.urlstatus)</td>
+                        </tr>
+                
+                    }
+
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
