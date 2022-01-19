@@ -25,7 +25,7 @@ namespace urlmonitor.Models
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unable to read urls from file");
+                Console.WriteLine("Unable to read urls from" + filePath);
                 Console.WriteLine(e);
             }
 
