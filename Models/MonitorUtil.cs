@@ -17,7 +17,7 @@ namespace urlmonitor.Models
         {
             
                 List<JsonUrl> urldetails = new List<JsonUrl>();
-                string filePath = @"./urls.json";
+                string filePath = @"/var/www/html/urls.json";
             try
             {
                 urldetails = JsonConvert.DeserializeObject<List<JsonUrl>>(System.IO.File.ReadAllText(filePath));
@@ -121,7 +121,7 @@ namespace urlmonitor.Models
         {
             string logpath;
 
-            string todaylog = @"C:\logss\" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day+ ".log";
+            string todaylog = @"/var/log/logss/" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day+ ".log";
 
             if (File.Exists(todaylog))
             {
