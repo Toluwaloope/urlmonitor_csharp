@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - sudo curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+      - sudo sudo apt-add-repository https://packages.microsoft.com/ubuntu/20.04/prod
+      - sudo apt-get update -y
+      - sudo apt install dotnet-sdk-5.0 -y
+      - sudo chmod 740 /usr/local/bin/dotnet add package Newtonsoft.Json --version 13.0.1
+
+  build:
+    commands:
+      - echo Building the urlmonitor project on 'date'
+      - sudo /usr/local/bin/dotnet build *.csproj --runtime linux-x64   
+      
+  post_build:
+    commands:
+     - echo Build completed for urlmonitor project on 'date'
+     - echo project publish started for urlmonitor project on 'date'
+     - sudo /usr/local/bin/dotnet publish *.sln --configuration Realease --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/
+artifacts:
+  files:
+     - $HOME/*
+     - appspec.yml
+     - scripts/*
+  discard-paths: yes
