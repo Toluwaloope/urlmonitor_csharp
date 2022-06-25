@@ -12,13 +12,13 @@ phases:
   build:
     commands:
       - echo Building the urlmonitor project on 'date'
-      - sudo /usr/local/bin/dotnet build *.csproj --runtime linux-x64   
+      - sudo chmod 740 /usr/local/bin/dotnet build *.csproj --runtime linux-x64   
       
   post_build:
     commands:
      - echo Build completed for urlmonitor project on 'date'
      - echo project publish started for urlmonitor project on 'date'
-     - sudo /usr/local/bin/dotnet publish *.sln --configuration Realease --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/
+     - sudo chmod 740 /usr/local/bin/dotnet publish *.sln --configuration Realease --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/
 artifacts:
   files:
      - $HOME/*
