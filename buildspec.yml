@@ -7,7 +7,7 @@ phases:
       - sudo apt-add-repository https://packages.microsoft.com/ubuntu/20.04/prod
       - sudo apt-get update -y
       - sudo apt install dotnet-sdk-5.0 -y
-      - sudo chmod 740 /usr/local/bin/dotnet add package Newtonsoft.Json --version 13.0.1
+      - sudo dotnet add package Newtonsoft.Json --version 13.0.1
 
   build:
     commands:
