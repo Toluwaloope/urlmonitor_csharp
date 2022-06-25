@@ -18,7 +18,7 @@ phases:
     commands:
      - echo Build completed for urlmonitor project on 'date'
      - echo project publish started for urlmonitor project on 'date'
-     - sudo dotnet publish *.sln --configuration Realease --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/
+     - sudo dotnet publish *.sln --configuration Release --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/
 artifacts:
   files:
      - $HOME/*
