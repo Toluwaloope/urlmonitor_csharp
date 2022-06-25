@@ -1,0 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html
+
+hooks:
+  ApplicationStop:
+    - location: stop_server.sh
+      timeout: 180
+      runas: root
+  BeforeInstall:
+    - location: before_install.sh
+      timeout: 300
+      runas: root
+  Install:
+    - location: fix_executables.sh
+      timeout: 300
+      runas: root
+  After Install:
+    - location: install.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: start_server.sh
+      timeout: 180
