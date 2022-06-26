@@ -9,6 +9,7 @@ phases:
       - sudo apt install zip -y
       - sudo apt install dotnet-sdk-5.0 -y
       - sudo dotnet add package Newtonsoft.Json --version 13.0.1
+      - sudo mkdir $HOME/url-monitor
 
   build:
     commands:
@@ -19,11 +20,11 @@ phases:
     commands:
      - echo Build completed for urlmonitor project on 'date'
      - echo project publish started for urlmonitor project on 'date'
-     - sudo dotnet publish *.sln --configuration Release --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/
-     - sudo zip -r $HOME/url-monitor.zip $HOME/
+     - sudo dotnet publish *.sln --configuration Release --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/url-monitor
+     - sudo zip -r $HOME/url-monitor.zip $HOME/url-monitor/
 artifacts:
   files:
-     - $HOME/*.zip
+     - $HOME/url-monitor/*.zip
      - appspec.yml
      - scripts/*
   discard-paths: yes
