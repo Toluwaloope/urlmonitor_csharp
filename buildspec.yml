@@ -21,10 +21,10 @@ phases:
      - echo Build completed for urlmonitor project on 'date'
      - echo project publish started for urlmonitor project on 'date'
      - sudo dotnet publish *.sln --configuration Release --framework netcoreapp3.1 --runtime linux-x64 --output $HOME/url-monitor
-     - sudo zip -r $HOME/url-monitor.zip $HOME/url-monitor/
+     - sudo zip -r $HOME/url-monitor/url-monitor.zip $HOME/url-monitor/
 artifacts:
   files:
      - $HOME/url-monitor/*.zip
      - appspec.yml
-     - scripts/*
+     - deployment_script/*
   discard-paths: yes
