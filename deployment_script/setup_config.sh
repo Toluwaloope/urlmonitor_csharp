@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo cd /etc/apache2/sites-available/ >> $HOME/codeploylogs.log
+sudo cd /etc/apache2/sites-available/ &>> $HOME/codeploylogs.log
 
 sudo cat > /etc/apache2/sites-available/url-monitor.conf << EOF
 <VirtualHost *:80>
@@ -13,11 +13,11 @@ CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOL
 
-sudo cat /etc/apache2/sites-available/url-monitor.conf >> $HOME/codeploylogs.log
+sudo cat /etc/apache2/sites-available/url-monitor.conf &>> $HOME/codeploylogs.log
 
-sudo a2ensite url-monitor.conf 
+sudo a2ensite url-monitor.conf &>> $HOME/codeploylogs.log
 
-sudo cat > /etc/systemd/system/url-monitor.service << EOF
+sudo cat > /etc/systemd/system/url-monitor.service << EOL
 
 [Unit]
 Description= Url monitor service with .NET Web app running on Ubuntu
