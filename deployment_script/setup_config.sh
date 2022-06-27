@@ -2,7 +2,7 @@
 
 sudo cd /etc/apache2/sites-available/ &>> $HOME/codeploylogs.log
 
-sudo cat > /etc/apache2/sites-available/url-monitor.conf << EOF
+sudo cat > /etc/apache2/sites-available/url-monitor.conf << EOL
 <VirtualHost *:80>
 ServerAdmin admin@localhost
 ServerName example.com
