@@ -12,13 +12,9 @@ ErrorLog ${APACHE_LOG_DIR}/error.log
 CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
-
 sudo cat /etc/apache2/sites-available/url-monitor.conf >> $HOME/codeploylogs.log
-
 sudo a2ensite url-monitor.conf &>> $HOME/codeploylogs.log
-
 sudo cat > /etc/systemd/system/url-monitor.service << EOF
-
 [Unit]
 Description= Url monitor service with .NET Web app running on Ubuntu
 
@@ -35,6 +31,5 @@ Environment=ASPNETCORE-ENVIRONEMT=Development
 [Install]
 WantedBy=multi-user.target
 EOF
-
 sudo cat /etc/systemd/system/url-monitor.service >> $HOME/codeploylogs.log
 
