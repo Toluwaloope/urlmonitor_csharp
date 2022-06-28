@@ -2,7 +2,7 @@
 
 sudo cd /etc/apache2/sites-available/ &>> $HOME/codeploylogs.log
 
-sudo cat > /etc/apache2/sites-available/url-monitor.conf << EOL
+sudo cat > /etc/apache2/sites-available/url-monitor.conf << EOF
 <VirtualHost *:80>
 ServerAdmin admin@localhost
 ServerName example.com
@@ -11,13 +11,13 @@ DocumentRoot /var/www/url-monitor
 ErrorLog ${APACHE_LOG_DIR}/error.log
 CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-EOL
+EOF
 
-sudo cat /etc/apache2/sites-available/url-monitor.conf &>> $HOME/codeploylogs.log
+sudo cat /etc/apache2/sites-available/url-monitor.conf >> $HOME/codeploylogs.log
 
 sudo a2ensite url-monitor.conf &>> $HOME/codeploylogs.log
 
-sudo cat > /etc/systemd/system/url-monitor.service << EOL
+sudo cat > /etc/systemd/system/url-monitor.service << EOF
 
 [Unit]
 Description= Url monitor service with .NET Web app running on Ubuntu
@@ -34,7 +34,7 @@ Environment=ASPNETCORE-ENVIRONEMT=Development
 
 [Install]
 WantedBy=multi-user.target
-EOL
+EOF
 
 sudo cat /etc/systemd/system/url-monitor.service >> $HOME/codeploylogs.log
 
