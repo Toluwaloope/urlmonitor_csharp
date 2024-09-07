@@ -10,6 +10,7 @@ phases:
       - sudo apt-get update -y
       - sudo apt install zip -y
       - sudo apt install dotnet-sdk-6.0 -y
+      - sudo dotnet new nugetconfig
       - sudo dotnet add package Newtonsoft.Json --version 13.0.1
       - sudo mkdir $HOME/url-monitor
 
