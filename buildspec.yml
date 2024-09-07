@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - sudo curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-      - sudo apt-add-repository https://packages.microsoft.com/ubuntu/20.04/prod
+      - sudo apt-add-repository https://packages.microsoft.com/ubuntu/24.04/prod
       - sudo apt-get update -y
       - sudo apt install zip -y
       - sudo apt install dotnet-sdk-5.0 -y
