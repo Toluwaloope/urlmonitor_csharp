@@ -7,6 +7,14 @@ phases:
       - sudo curl -sSL -O https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
       - sudo dpkg -i packages-microsoft-prod.deb
       - sudo rm packages-microsoft-prod.deb
+      - "echo 'Package: dotnet* aspnet* netstandard*' >> /etc/apt/preferences"
+      - "echo 'Pin: origin \"archive.ubuntu.com\"' >> /etc/apt/preferences"
+      - "echo 'Pin-Priority: -10' >> /etc/apt/preferences"
+      - "echo '' >> /etc/apt/preferences"
+      - "echo 'Package: dotnet* aspnet* netstandard*' >> /etc/apt/preferences"
+      - "echo 'Pin: origin \"security.ubuntu.com\"' >> /etc/apt/preferences"
+      - "echo 'Pin-Priority: -10' >> /etc/apt/preferences"
+      - sudo cat /etc/apt/preferences
       - sudo apt-get update -y
       - sudo apt install zip -y
       - sudo apt install dotnet-sdk-6.0 -y
